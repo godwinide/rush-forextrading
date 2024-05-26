@@ -1,0 +1,110 @@
+<script>
+  wow = new WOW();
+  wow.init();
+</script>
+
+<div id="main_other">
+  <div id="sub_other">
+    <div class="about_border_r"></div>
+    <div class="about_head">
+      <p>Contact Us</p>
+    </div>
+    <div class="all-information">
+      <script language="javascript">
+        function checkform() {
+          if (document.mainform.name.value == "") {
+            alert("Please type your full name!");
+            document.mainform.name.focus();
+            return false;
+          }
+          if (document.mainform.email.value == "") {
+            alert("Please enter your e-mail address!");
+            document.mainform.email.focus();
+            return false;
+          }
+          if (document.mainform.message.value == "") {
+            alert("Please type your message!");
+            document.mainform.message.focus();
+            return false;
+          }
+          return true;
+        }
+      </script>
+      <form method="post" name="mainform" onsubmit="return checkform()">
+        <div class="contact_left">
+          <div class="information-headc">
+            <p><img src="images/cm.png" /> SEND US E-MAIL :</p>
+          </div>
+          <div class="information_all">
+            <div class="info_one">
+              <input
+                type="text"
+                placeholder="Your Full Name"
+                name="name"
+                value=""
+              />
+            </div>
+            <div class="info_one">
+              <input
+                type="text"
+                placeholder="Your Email "
+                name="email"
+                value=""
+              />
+            </div>
+
+            <div class="text-area">
+              <textarea name="message" placeholder="Message"></textarea>
+            </div>
+            <div class="send">
+              <input type="submit" value="SEND MESSAGE" />
+            </div>
+          </div>
+        </div>
+        <div class="contact_right">
+          <div class="information-headr">
+            <p><img src="images/addinfo.png" /> ADDRESS INFO :</p>
+          </div>
+          <div class="add_box">
+            <div class="con_one">
+              <div class="con_icon">
+                <img src="images/loc.png" />
+              </div>
+              <div class="con_text">
+                <p>3 Middlesex Street, London <br />United Kingdom, E1 7AA</p>
+              </div>
+            </div>
+            <div class="con_one">
+              <div class="con_icon">
+                <img src="images/mailf.png" />
+              </div>
+              <div class="con_text">
+                <p style="margin-top: -5px">
+                  E-mail: support@Rush-Forextrading.com
+                </p>
+              </div>
+            </div>
+            <div class="con_one">
+              <div class="con_icon">
+                <img src="images/phn.png" />
+              </div>
+              <div class="con_text">
+                <p style="margin-top: -3px">+1</p>
+              </div>
+            </div>
+            <div class="con_down">
+              <div class="contact_man">
+                <img src="images/man.png" />
+              </div>
+              <div class="rightdow">
+                <div class="tws">
+                  <p></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,278 @@
+<html>
+    
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+  <title>Rush-Forextrading</title>
+  <link href='/styles/bootstrap.min.css' rel='stylesheet' type='text/css'>
+  <link href='/styles/custom.css' rel='stylesheet' type='text/css'>
+  <link href='/styles/css/hover.css' rel='stylesheet' type='text/css'>
+  <link href='/styles/animate.css' rel='stylesheet' type='text/css'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <link href="/styles/custom_back.css" rel="stylesheet" type="text/css">
+
+  <script src='/styles/bootstrap.min.js' type='text/javascript'></script>
+  <script src='/styles/calc.js' type='text/javascript'></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+  
+  <link rel="icon" href="/styles/img/favicon.png" type="image/png"/>
+  
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $(".cal2").click(function() {
+        $(".calculate_ctn").toggle();
+        $(".calculate_ctn").addClass("animated lightSpeedIn");
+      });
+    });
+  </script>
+        <script type="text/javascript">
+        var tday=new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
+        var tmonth=new Array("January","February","March","April","May","June","July","August","September","October","November","December");
+
+        function GetClock(){
+        var tzOffset = -5;//set this to the number of hours offset from UTC
+
+        var d=new Date();
+        var dx=d.toGMTString();
+        dx=dx.substr(0,dx.length -3);
+        d.setTime(Date.parse(dx))
+        d.setHours(d.getHours()+tzOffset);
+        var nday=d.getDay(),nmonth=d.getMonth(),ndate=d.getDate();
+        var nhour=d.getHours(),nmin=d.getMinutes(),ap;
+        if(nhour==0){ap=" AM";nhour=12;}
+        else if(nhour<12){ap=" AM";}
+        else if(nhour==12){ap=" PM";}
+        else if(nhour>12){ap=" PM";nhour-=12;}
+
+        if(nmin<=9) nmin="0"+nmin;
+
+        document.getElementById('clockbox').innerHTML=""+tday[nday]+", "+tmonth[nmonth]+" "+ndate+" "+nhour+":"+nmin+ap+"";
+        }
+
+        window.onload=function(){
+        GetClock();
+        setInterval(GetClock,1000);
+        }
+        </script>
+</head>
+
+<body>
+    <script type="text/javascript">
+  //// Get the CryptoCurrency Information from the API
+  jQuery.ajax({
+    url: "https://min-api.cryptocompare.com/data/pricemulti",
+    data: "fsyms=BTC,ETH,DASH,LTC&tsyms=USD",
+    dataType : 'json',
+  }).done(function(data) {
+    // console.log( "BTC : " + data.BTC.USD + ", ETH : " + data.ETH.USD + ", DASH : " + data.DASH.USD, LTC : " + data.LTC.USD);
+    jQuery(".dashCoin").html('$' + data.DASH.USD);
+    jQuery(".ethCoin").html('$' + data.ETH.USD);
+    jQuery(".bitCoin").html('$' + data.BTC.USD);
+    jQuery(".liteCoin").html('$' + data.LTC.USD);
+  }).fail(function() {
+    console.log( "API error" );
+  });
+</script>
+  <script type="text/javascript">
+  $(document).ready(function() {
+    $(".cal2").click(function() {
+      $(".calculate_ctn").toggle();
+      $(".calculate_ctn").addClass("animated lightSpeedIn");
+    });
+  });
+</script>
+<script type="text/javascript">
+  var tday=new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
+  var tmonth=new Array("January","February","March","April","May","June","July","August","September","October","November","December");
+
+  function GetClock(){
+    var tzOffset = -5;//set this to the number of hours offset from UTC
+
+    var d=new Date();
+    var dx=d.toGMTString();
+    dx=dx.substr(0,dx.length -3);
+    d.setTime(Date.parse(dx))
+    d.setHours(d.getHours()+tzOffset);
+    var nday=d.getDay(),nmonth=d.getMonth(),ndate=d.getDate();
+    var nhour=d.getHours(),nmin=d.getMinutes(),ap;
+    if(nhour==0){ap=" AM";nhour=12;}
+    else if(nhour<12){ap=" AM";}
+    else if(nhour==12){ap=" PM";}
+    else if(nhour>12){ap=" PM";nhour-=12;}
+
+    if(nmin<=9) nmin="0"+nmin;
+
+    document.getElementById('clockbox').innerHTML=""+tday[nday]+", "+tmonth[nmonth]+" "+ndate+" "+nhour+":"+nmin+ap+"";
+  }
+
+  window.onload=function(){
+    GetClock();
+    setInterval(GetClock,1000);
+  }
+</script>
+
+
+
+<style id="stylish-1" class="stylish" type="text/css"></style>
+
+<body style="zoom: 1;"><div class="headerContainer">
+  <div class="headerInner fadeInLeft wow"> <a href="/dashboard" id="logo"></a>
+    <p>1 BTC: <span class="bitCoin"><% req.user.currency %>39384.42</span></p>
+    <div class="hdRight">
+      <div class="mainNavRight">
+        <div class="navbar">
+          <div class="navbar-inner">
+            <ul class="nav">
+                <li><a class="btn_acc hvr-sweep-to-right" href="/">account</a></li>
+            <li><a class="btn_dep hvr-sweep-to-right" href="/deposit">deposit</a></li>
+            <li><a class="btn_withd hvr-sweep-to-right" href="/trade">Trade Center</a></li>
+          
+            <li><a class="btn_trans hvr-sweep-to-right" href="/logout">Logout</a></li>             </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="account_contentContainer">
+    <div class="account_contentInner">
+      <div class="account_title">
+        <div class="account_title_Left">
+          <p>Hello, <span><%= req.user.fullname %></span></p>
+          <div class="clearfix">
+          </div>
+        </div>
+        <div class="account_title_Right">
+          <p>Your Personal Affiliate Link:</p>
+          <a href="https://Rush-Forextrading.com//?ref=<%=req.user.username%>"> https://Rush-Forextrading.com//?ref=<%=req.user.username%></a>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+
+<div class="alert alert-success">
+      <marquee scrolldelay:10;="" vspace="5" hspace="30">
+   <script>
+                var a = ["Nadine",  "Roxanne","Cynthia","Verena","Fidelia","Wilford", "Amal","Guillermo","Robbin","Tawna" ,"Lee","Gwenn", "Sandi","Olene","Azzie","Katharyn","Coral", "Shelley" ,"Elvis","Francine","Yadira","Tanesha","Lani",
+                "Ilene","Tressie","aquanda","Ginny","Alyse","Bari","Chun","  Luise", "Maris","Hisak","Gwenda","Cayla","Lorriane","Lane", "Lera","Jenni","Margret","Corinna","Yuonne","Kathryn","Terica" ,"Francis","Claretha","Chana", "arlie","Nakia"  
+
+];
+var b = ["1", "2", "3","4", "5", "6","7", "8", "9","10", "12", "13","11", "22", "113","111", "1112", "43","14", "62", "83","16", "28", "31","13", "2", "3","1", "2", "3","1", "2", "3","1", "2", "3","1", "2", "3","1", "2", "3","1", "2", "3","1", "2", "3","1", "2", "3","1", "2", "3","1", "2", "3","1", "2", "3","1", "2", "3","1", "2", "3"];
+
+var rA = Math.floor(Math.random()*a.length);
+var rB = Math.floor(Math.random()*b.length);
+var name = a[rA] + b[rB];
+document.write(name);
+                
+                
+            </script>Roxanne113Verena113 withdrew $<script type="text/javascript"> 
+    var min=3500; 
+    var max=7000;  
+    var random =Math.floor(Math.random() * (+max - +min)) + +min; 
+    document.write("" + random );  
+</script>
+</marquee>
+</div>
+
+
+      <div class="account_ctn">
+        <div class="account_ctn_Left">
+          <ul>
+            <li><a class="btn_acc hvr-sweep-to-right" href="/">account</a></li>
+            <li><a class="btn_dep hvr-sweep-to-right" href="/deposit">deposit</a></li>
+            <li><a class="btn_withd hvr-sweep-to-right" href="/withdraw">withdraw</a></li>
+            <li><a class="btn_dep hvr-sweep-to-right" href="/roi">My Trades</a></li>
+            <!-- <li><a class="btn_securi hvr-sweep-to-right" href="/verify">verify account</a></li> -->
+            	<li><a class="btn_trans hvr-sweep-to-right" href="/roi">transactions</a></li>
+						<li><a class="btn_refer hvr-sweep-to-right" href="/refer">referrals</a></li>
+						<li><a class="btn_setting hvr-sweep-to-right" href="/profile">settings</a></li>
+						<li><a class="btn_securi hvr-sweep-to-right" href="#">support</a></li>
+          </ul>
+        </div>
+        <div class="account_ctn_Right">
+
+
+
+
+
+  <div class="account_ctn_Right_Part1">
+            <div class="acr_Part1 acr_Part11">
+              <h4>username:</h4>
+              <h3><%=req.user.username%></h3>
+            </div>
+            <div class="acr_Part1 acr_Part12">
+              <h4>Registration Date: <br/> <%= new Date(req.user.regDate).toDateString() %></h4>
+              <h3></h3>
+            </div>
+            <div class="acr_Part1 acr_Part13">
+              <h4>last access:-</h4>
+              <h3>&nbsp;-</h3>
+            </div>
+          </div>
+          <div class="account_ctn_Right_Part2">
+            <div class="acr_Part2 acr_Part21 ">
+              <div class="acr_Part2_title">
+                <p>Account Balance</p>
+                <h3><%= req.user.currency %><b><%= comma(req.user.balance) %></b></h3>
+              </div>
+              <div class="acr_Part2_ctn">
+                <a href="/withdraw">request payment</a>
+              </div>
+            </div>
+            <div class="acr_Part2 acr_Part22 ">
+              <div class="acr_Part2_title">
+                <p>Active Deposit</p>
+                <h3><%= req.user.currency %><%= comma(req.user.active_deposit) %></h3>
+              </div>
+              <div class="acr_Part2_ctn">
+                <a href="/deposit">make a deposit</a>
+              </div>
+            </div>
+            <div class="acr_Part2 acr_Part23">
+              <div class="acr_Part2_title">
+                <p>Bonus</p>
+                <h3><% req.user.currency %><b><%= comma(req.user.bonus) %></b></h3>
+              </div>
+              
+            </div>
+            <div class="acr_Part2 acr_Part24">
+              <div class="acr_Part2_title">
+                <p>Withdrawal</p>
+                <h3><b><%= comma(req.user.total_withdraw) %></b></h3>
+              </div>
+              
+            </div>
+          </div>
+
+
+                                                              
+<br><br>
+<br>
+</div>
+ <img src="tk.gif">
+        <div class="clearfix"></div>
+      </div>
+    </div>
+ 
+
+</div>
+  <div class="solidContainer">
+  <div class="solidInner zoomIn wow">
+    <div class="solid"> <a href="/#" class="solid1"></a> <a href="/#" class="solid2"></a> <a href="/#" class="solid3"></a> <a href="/#" class="solid4"></a> <a href="/#" class="solid5"></a> <a href="/#" class="solid6"></a> <a href="/#" class="solid7"></a> <a href="/#" class="solid8"></a> </div>
+  </div>
+</div>
+<div class="footerContainer">
+  <div class="footerInner">
+    <div class="ft-row1">
+      <h3>© 2021. <a href="/">Rush-Forextrading</a> ALL RIGHTS RESERVED</h3>
+    </div>  <!-- end footerContainer --> 
+
+ 
+<div style="position:fixed; bottom:0px; right:0px;">
+
+
+  </div>
+
+</body>
+</html>
+        
